@@ -3,3 +3,24 @@
 <h1>DashBoard</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quaerat consectetur distinctio laboriosam dolores deleniti, cupiditate voluptas ad nostrum accusamus perspiciatis eaque beatae nisi, numquam ipsum aliquid voluptatem repellat impedit!</p>
 
+<table datatable="" class="row-border hover">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>region</th>
+        <th>subregion</th>
+        <th>capital</th>
+        <th>population</th>
+
+    </tr>
+    </thead>
+    <tbody>    
+    <tr ng-repeat="e in Paises">
+        <td>{{e.name}}</td>
+        <td>{{e.region}}</td>
+        <td>{{e.subregion}}</td>
+        <td>{{e.capital}}</td>
+        <td>{{e.population}}</td>
+    </tr>
+    </tbody>
+</table>

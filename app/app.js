@@ -1,5 +1,6 @@
 var app = angular.module('AngularTemplate', [ 
-		'ngRoute'
+		'ngRoute',
+        'datatables'
 	]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -12,5 +13,8 @@ app.config(['$routeProvider', function($routeProvider) {
     	.when('/Dashboard', {
             templateUrl : 'app/dashboard/dashboard.html',
             controller  : 'DashboardController'
-		});
-}]);
+		})
+        .otherwise({
+            redirectTo  : '/Dashboard'
+        });
+    }]);
