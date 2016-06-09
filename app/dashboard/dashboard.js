@@ -1,28 +1,14 @@
-app.controller('DashboardController', ['$scope','$http',function($scope,$http) {
+app.controller('DashboardController', ['$scope','$http','DTOptionsBuilder','DTColumnBuilder',function($scope,$http,DTOptionsBuilder,DTColumnBuilder) {
 
-	$scope.Paises = [];
+		$scope.dtOptions = DTOptionsBuilder.fromSource('https://restcountries.eu/rest/v1/all')
+        .withPaginationType('full_numbers');
 
-	$http({
-	  method: 'GET',
-	  url: 'https://restcountries.eu/rest/v1/all'
-	}).then(function successCallback(response) {
-			var obj = response.data;
-
-			angular.forEach(obj, function(value, key) {
-
-  				$scope.Paises.push({
-	    		name: value.name,
-	    		region: value.region,
-	    		subregion: value.subregion,
-	    		capital: value.capital,
-	    		population: value.population,
-
-	    		});
-
-			});	    	
-
-	  }, function errorCallback(response) {
-	    	console.log(response);
-	  });
+    	$scope.dtColumns = [
+            DTColumnBuilder.newColumn('name').withTitle('NOMBRE'),
+            DTColumnBuilder.newColumn('region').withTitle('REGION'),
+            DTColumnBuilder.newColumn('subregion').withTitle('SUBREGION'),
+            DTColumnBuilder.newColumn('capital').withTitle('CAPITAL'),
+            DTColumnBuilder.newColumn('population').withTitle('POPULATION')
+        ];
 
 }]);
